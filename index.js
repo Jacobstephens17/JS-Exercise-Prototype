@@ -88,8 +88,8 @@ console.log(personOne.stomach);
     - STRETCH: A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
-function Car(mode, milesPerGallon) {
-  this.mode = mode;
+function Car(model, milesPerGallon) {
+  this.model = model;
   this.milesPerGallon = milesPerGallon;
   this.tank = 0;
   this.odometer = 0;
@@ -117,26 +117,24 @@ console.log(carOne.tank);
         + Should return a string "Playing with x", x being the favorite toy.
 */
 
-function Baby(attribute){
-  Person.call(this, attribute);
-}
-const baby = new Baby({
-  name:"Jacob",
-  age: 1,
-  favoriteToy: "Buzz"
-});
-
 Baby.prototype = Object.create(Person.prototype);
 
+function Baby(name, age, favoriteToy){
+  this.name = name;
+  this.age = age;
+  this.favoriteToy = favoriteToy;
+}
+
+const baby = new Baby("Jacob", 1, "Buzz");
+const babyTwo = new Baby("Tyler", 1, "Woody");
+
 Baby.prototype.play = function(){
-  console.log(`Playing with ${this.favoriteToy}`)
-};
+  return `Playing with ${this.favoriteToy}, ${this.favoriteToy} being the favorite toy`;
+}
 
-
-
-
-
-baby.play();
+console.log(baby);
+console.log(babyTwo);
+console.log(baby.play());
 
 /* 
   TASK 4
