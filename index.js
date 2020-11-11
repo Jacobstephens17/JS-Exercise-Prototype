@@ -38,15 +38,41 @@ Airplane.prototype.land = function () {
     - Give instances of Person a method `.toString()`:
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
-
-
-
 function Person(name, age){
   this.name = name;
   this.age = age;
   this.stomach = [];
 }
 
+Person.prototype.eat = function(edible){
+  if(this.stomach.length < 10){
+    this.stomach.push(edible);
+  }
+}
+
+Person.prototype.poop = function(){
+  this.stomach = [];
+}
+
+Person.prototype.toString = function(){
+  return `${this.name}, ${this.age}`;
+}
+
+const personOne = new Person("Jacob", 20);
+const personTwo = new Person("Leah", 29);
+const personThree = new Person("Karla", 24);
+
+console.log(personOne.toString());
+console.log(personTwo.toString());
+console.log(personThree.toString());
+
+personOne.eat("pizza");
+personOne.eat("burger");
+personOne.eat("sushi");
+
+console.log(personOne.stomach);
+personOne.poop();
+console.log(personOne.stomach);
 
 
 /*
@@ -62,10 +88,18 @@ function Person(name, age){
     - STRETCH: A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
-
-function Car() {
-
+function Car(mode, milesPerGallon) {
+  this.mode = mode;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 }
+Car.prototype.fill = function(gallons){
+    this.tank = this.tank + gallons;
+}
+const carOne = new Car();
+carOne.fill(50);
+console.log(carOne.tank);
 
 /*
   TASK 3
