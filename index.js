@@ -96,16 +96,13 @@ function Car(model, milesPerGallon) {
   this.tank = 0;
   this.odometer = 0;
 }
-
 Car.prototype.fill = function(gallons){
     this.tank = this.tank + gallons;
 }
-
 Car.prototype.drive = function(distance){
   this.odometer = this.odometer + distance;
-  
+  this.tank = distance / this.milesPerGallon;
 }
-
 const carOne = new Car();
 carOne.fill(50);
 console.log(carOne.tank);
